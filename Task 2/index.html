@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	
+		<!-- Add style/CSS -->
+		<style>
+			body {
+				text-align: center;
+				background: #c9b88d;
+				font-family: sans-serif;
+				font-weight: 100;
+			}
+		
+			/* Styling for heading */
+			h1 {
+				color: rgb(10, 10, 10);
+				font-weight: 100;
+				font-size: 40px;
+				margin: 40px 0px 20px;
+			}
+			#clockdiv {
+				font-family: sans-serif;
+				color: #fff;
+				display: inline-block;
+				font-weight: 100;
+				text-align: center;
+				font-size: 30px;
+			}
+			#clockdiv > div {
+				padding: 10px;
+				border-radius: 3px;
+				background: #051914;
+				display: inline-block;
+			}
+			#clockdiv div > span {
+				padding: 15px;
+				border-radius: 3px;
+				background: #3b4b48;
+				display: inline-block;
+			}
+
+			/* Style for visible text */
+			.smalltext {
+				padding-top: 5px;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<!-- Title or heading -->
+		<h1>Countdown Clock</h1>
+		<div id="clockdiv">
+			<div>
+			
+				<!-- Show No. of days -->
+				<span class="days" id="day"></span>
+				<div class="smalltext">Days</div>
+			</div>
+			<div>
+			
+				<!-- Show no.of hours -->
+				<span class="hours" id="hour"></span>
+				<div class="smalltext">Hours</div>
+			</div>
+			<div>
+			
+				<!-- Show no. of minutes -->
+				<span class="minutes" id="minute"></span>
+				<div class="smalltext">Minutes</div>
+			</div>
+			<div>
+			
+				<!-- Show seconds -->
+				<span class="seconds" id="second"></span>
+				<div class="smalltext">Seconds</div>
+			</div>
+		</div>
+		<p id="demo"></p>
+	
+		<!-- Adding JavaScript code -->
+		<script>
+		
+			// Getting formated date from date string
+			let deadline = new Date(
+				"dec 31, 2023 15:37:25"
+			).getTime();
+
+			// Calling defined function at certain interval
+			let x = setInterval(function () {
+
+				// Getting current date and time in required format
+				let now = new Date().getTime();
+
+				// Calculating difference
+				let t = deadline - now;
+
+				// Getting values of days,hours,minutes, seconds
+				let days = Math.floor(
+					t / (1000 * 60 * 60 * 24)
+				);
+				let hours = Math.floor(
+					(t % (1000 * 60 * 60 * 24)) /
+						(1000 * 60 * 60)
+				);
+				let minutes = Math.floor(
+					(t % (1000 * 60 * 60)) / (1000 * 60)
+				);
+				let seconds = Math.floor(
+					(t % (1000 * 60)) / 1000
+				);
+
+				// Show the output time
+				document.getElementById("day")
+						.innerHTML = days;
+				document.getElementById("hour")
+						.innerHTML = hours;
+				document.getElementById("minute")
+						.innerHTML = minutes;
+				document.getElementById("second")
+						.innerHTML = seconds;
+
+				// Show overtime output
+				if (t < 0) {
+					clearInterval(x);
+					document.getElementById(
+						"demo"
+					).innerHTML = "TIME UP";
+					document.getElementById(
+						"day"
+					).innerHTML = "0";
+					document.getElementById(
+						"hour"
+					).innerHTML = "0";
+					document.getElementById(
+						"minute"
+					).innerHTML = "0";
+					document.getElementById(
+						"second"
+					).innerHTML = "0";
+				}
+			}, 1000);
+		</script>
+	</body>
+</html>
