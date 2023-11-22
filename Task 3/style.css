@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #50c0d9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.weather-widget {
+    background-color: #fff;
+    padding: 35px;
+    border-radius: 100px;
+    box-shadow: 0 0 10px rgba(49, 40, 40, 0.1);
+    text-align: center;
+}
